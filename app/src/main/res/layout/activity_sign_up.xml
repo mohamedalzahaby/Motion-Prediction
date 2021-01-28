@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".Activity.SignUpActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/signUp_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:navigationContentDescription="@string/abc_action_bar_up_description"
+        tools:ignore="PrivateResource" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical"
+        android:layout_below="@id/signUp_toolbar">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_nback"
+            android:fontFamily="@font/nexabold"
+            android:textColor="@color/dark_blue"
+            android:textSize="20pt" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            >
+            <EditText
+                android:id="@+id/signUp_et_name_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:hint="@string/edt_name"
+                android:padding="20dp"
+                tools:ignore="Autofill"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <EditText
+                android:id="@+id/signUp_et_email_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:hint="@string/edt_email"
+                android:padding="20dp"
+                tools:ignore="Autofill" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:passwordToggleEnabled="true"
+            >
+
+            <EditText
+                android:id="@+id/signUp_et_password_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/edt_password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:padding="20dp"
+                tools:ignore="Autofill" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp">
+            <RadioGroup
+                android:id="@+id/signUp_userType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <RadioButton
+                    android:id="@+id/signUp_coach"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:buttonTint="@color/colorPrimary"
+                    android:checked="true"
+                    android:text="@string/coach" />
+
+                <RadioButton
+                    android:id="@+id/signUp_player"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/Player"
+                    android:buttonTint="@color/colorPrimary"
+                    />
+            </RadioGroup>
+
+
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/signup"
+                android:fontFamily="@font/nexalight"
+                android:textColor="@color/dark_blue"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textSize="19pt" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@color/colorPrimaryDark"
+                android:layout_marginEnd="10dp"
+                android:layout_margin="5dp"
+                android:clickable="true"
+                android:src="@drawable/ic_icon_feather_arrow_right"
+                android:focusable="true"
+                android:onClick="signup"
+                />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>
