@@ -1,5 +1,6 @@
 package com.example.MotionPrediction.DBConnection;
 
+import com.example.MotionPrediction.Models.Coach;
 import com.example.MotionPrediction.Models.TeamPerformance;
 import com.example.MotionPrediction.Models.User;
 
@@ -38,5 +39,5 @@ public interface ApiInterface {
 
 
     @POST("getCoachTeamsData")
-    Call<Coach> getTeamPerformanceDetails();
+    Call<Coach> getCoachTeamsData(@Query("coachId") int id);
 }

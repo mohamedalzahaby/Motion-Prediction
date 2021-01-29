@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.MotionPrediction.Controllers.TeamPerformanceDetailsController;
 import com.example.MotionPrediction.Controllers.UserController;
 import com.example.MotionPrediction.Entities.UserTypeId;
+import com.example.MotionPrediction.Models.Coach;
 import com.example.MotionPrediction.Models.TeamPerformance;
 import com.example.MotionPrediction.Models.TeamPerformanceDetails;
 import com.example.MotionPrediction.Models.User;
@@ -78,28 +79,24 @@ public class MainActivity2 extends AppCompatActivity {
 
                 if (userController.user.userTypeId == UserTypeId.COACH.id)
                 {
-                    final TeamPerformanceDetailsController teamPerformanceDetailsController = new TeamPerformanceDetailsController();
-
-                    Call<TeamPerformance> teamCall = teamPerformanceDetailsController.apiInterface.getTeamPerformanceDetails();
-                    teamCall.enqueue(new Callback<TeamPerformance>() {
+                    Call<Coach> teamCall = userController.apiInterface.getCoachTeamsData(userController.user.id);
+                    teamCall.enqueue(new Callback<Coach>() {
                         @Override
-                        public void onResponse(Call<TeamPerformance> call, Response<TeamPerformance> response) {
+                        public void onResponse(Call<Coach> call, Response<Coach> response) {
                             if (response.body() == null) {
                                 Toast.makeText(MainActivity2.this, "not found", Toast.LENGTH_SHORT).show();
                                 return;
                             }
-                            TeamPerformance teamPerformance = response.body();
-
-//                            teamPerformanceDetailsController.teamPerformanceDetailsList = response.body();
-//                            Log.i(TAG, "onResponse: teamPerformanceDetails= "+x);
-                            Intent activity = new Intent(MainActivity2.this, MainActivity.class);
+                            Coach coach = response.body();
+                            Log.i(TAG, "onResponse: coach= "+coach);
+                            /*Intent activity = new Intent(MainActivity2.this, MainActivity.class);
                             activity.putExtra(teamPerformance.modelName,teamPerformance);
                             activity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(activity);
+                            startActivity(activity);*/
                         }
 
                         @Override
-                        public void onFailure(Call<TeamPerformance> call, Throwable t) {
+                        public void onFailure(Call<Coach> call, Throwable t) {
                             Log.i(TAG, "onFailure: "+t.getMessage());
                             Toast.makeText(MainActivity2.this, "bad internet Connection", Toast.LENGTH_SHORT).show();
                         }
