@@ -1,6 +1,9 @@
 package com.example.MotionPrediction.DBConnection;
 
+import com.example.MotionPrediction.Models.TeamPerformance;
 import com.example.MotionPrediction.Models.User;
+
+import org.json.JSONObject;
 
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -31,5 +34,9 @@ public interface ApiInterface {
     Call<User> signIn(@Body User user);
 
     @POST("getTeamPerformanceDetails")
-    Call<ResponseBody> getTeamPerformanceDetails();
+    Call<TeamPerformance> getTeamPerformanceDetails();
+
+
+    @POST("getCoachTeamsData")
+    Call<Coach> getTeamPerformanceDetails();
 }

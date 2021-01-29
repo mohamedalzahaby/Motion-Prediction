@@ -12,10 +12,10 @@ import com.example.MotionPrediction.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MoviesFragment#newInstance} factory method to
+ * Use the {@link ProfileFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MoviesFragment extends Fragment {
+public class ProfileFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class MoviesFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public MoviesFragment() {
+    public ProfileFragment() {
         // Required empty public constructor
     }
 
@@ -39,8 +39,8 @@ public class MoviesFragment extends Fragment {
      * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MoviesFragment newInstance(String param1, String param2) {
-        MoviesFragment fragment = new MoviesFragment();
+    public static ProfileFragment newInstance(String param1, String param2) {
+        ProfileFragment fragment = new ProfileFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

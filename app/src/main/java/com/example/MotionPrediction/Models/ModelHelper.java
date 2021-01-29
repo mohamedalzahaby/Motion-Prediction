@@ -1,8 +1,11 @@
 package com.example.MotionPrediction.Models;
 
 import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
 //import java.util.Calendar;
-public class ModelHelper {
+public class ModelHelper implements Serializable {
 
     @SerializedName("id")
     public int id;

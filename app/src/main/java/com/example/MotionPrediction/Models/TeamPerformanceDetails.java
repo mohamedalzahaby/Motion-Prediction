@@ -3,7 +3,9 @@ package com.example.MotionPrediction.Models;
 import com.example.MotionPrediction.Other.ClassFinder;
 import com.google.gson.annotations.SerializedName;
 
-public class TeamPerformanceDetails extends ModelHelper
+import java.io.Serializable;
+
+public class TeamPerformanceDetails extends ModelHelper implements Serializable
 {
     @SerializedName("moveId")
     public int moveId;

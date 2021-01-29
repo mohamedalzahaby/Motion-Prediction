@@ -22,10 +22,11 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.MotionPrediction.Fragment.HomeFragment;
-import com.example.MotionPrediction.Fragment.MoviesFragment;
+import com.example.MotionPrediction.Fragment.ProfileFragment;
 import com.example.MotionPrediction.Fragment.NotificationsFragment;
-import com.example.MotionPrediction.Fragment.PhotosFragment;
+import com.example.MotionPrediction.Fragment.PlayersFragment;
 import com.example.MotionPrediction.Fragment.SettingsFragment;
+import com.example.MotionPrediction.Models.TeamPerformance;
 import com.example.MotionPrediction.Other.CircleTransform;
 import com.example.MotionPrediction.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtName, txtWebsite;
     private Toolbar toolbar;
     private FloatingActionButton fab;
+    private TeamPerformance teamPerformance;
 
     // urls to load navigation header background image
     // and profile image
@@ -70,6 +72,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        teamPerformance =  new TeamPerformance();
+        teamPerformance = (TeamPerformance) getIntent().getSerializableExtra(teamPerformance.modelName);
+
+
+
         toolbar = (Toolbar) findViewById(R.id.signin_toolbar);
 //        setSupportActionBar(toolbar);
 
@@ -111,6 +119,9 @@ public class MainActivity extends AppCompatActivity {
             CURRENT_TAG = TAG_HOME;
             loadHomeFragment();
         }
+
+
+
     }
 
     /***
@@ -200,15 +211,16 @@ public class MainActivity extends AppCompatActivity {
             case 0:
                 // home
                 HomeFragment homeFragment = new HomeFragment();
+                homeFragment.teamPerformance = teamPerformance;
                 return homeFragment;
             case 1:
-                // photos
-                PhotosFragment photosFragment = new PhotosFragment();
-                return photosFragment;
+                // players
+                PlayersFragment playersFragment = new PlayersFragment();
+                return playersFragment;
             case 2:
-                // movies fragment
-                MoviesFragment moviesFragment = new MoviesFragment();
-                return moviesFragment;
+                // profile fragment
+                ProfileFragment profileFragment = new ProfileFragment();
+                return profileFragment;
             case 3:
                 // notifications fragment
                 NotificationsFragment notificationsFragment = new NotificationsFragment();

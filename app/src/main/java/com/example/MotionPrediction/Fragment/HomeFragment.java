@@ -32,6 +32,7 @@ import com.anychart.enums.TooltipDisplayMode;
 import com.anychart.enums.TooltipPositionMode;
 import com.anychart.graphics.vector.Stroke;
 import com.example.MotionPrediction.Controllers.TeamPerformanceDetailsController;
+import com.example.MotionPrediction.Models.TeamPerformance;
 import com.example.MotionPrediction.Models.TeamPerformanceDetails;
 import com.example.MotionPrediction.Other.IMonths;
 import com.example.MotionPrediction.R;
@@ -44,7 +45,9 @@ import java.util.List;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment
+{
+    public TeamPerformance teamPerformance;
     private View[] progressBar;
 
     // TODO: Rename parameter arguments, choose names that match
@@ -106,8 +109,9 @@ public class HomeFragment extends Fragment {
         AnyChartView bar_chart = view.findViewById(R.id.bar_chart);
         bar_chart.setProgressBar(progressBar[2]);
         APIlib.getInstance().setActiveAnyChartView(bar_chart);
+        List<TeamPerformanceDetails> hello = teamPerformance.teamPerformanceDetailsList;
 //        getBarChart(bar_chart);
-        getBarChartFromDataBase(bar_chart, new ArrayList<TeamPerformanceDetails>());
+        getBarChartFromDataBase(bar_chart, (ArrayList<TeamPerformanceDetails>) teamPerformance.teamPerformanceDetailsList);
 
 
         return view;
@@ -128,10 +132,7 @@ public class HomeFragment extends Fragment {
             int monthTotalWrongMoves = TeamPerformanceDetailsController.getMonthTotalWrongMoves(i + 1, teamPerformanceDetailsList);
             int monthTotalCorrectMoves = TeamPerformanceDetailsController.getMonthTotalCorrectMoves(i + 1, teamPerformanceDetailsList);
             seriesData.add(
-                    new CustomDataEntry(month,
-                            monthTotalCorrectMoves,
-                            -monthTotalWrongMoves
-                    )
+                    new CustomDataEntry(month, monthTotalCorrectMoves, -monthTotalWrongMoves )
             );
 
         }
@@ -318,16 +319,11 @@ public class HomeFragment extends Fragment {
         cartesian.xAxis(0).labels().padding(5d, 5d, 5d, 5d);
 
         List<DataEntry> seriesData = new ArrayList<>();
+
+//        String month;
+//        int performancePercentage;
+//        seriesData.add(new ValueDataEntry(month, performancePercentage));
         seriesData.add(new ValueDataEntry("2000", 1.5));
-        seriesData.add(new ValueDataEntry("2001", 13.5));
-        seriesData.add(new ValueDataEntry("2002", 14.8));
-        seriesData.add(new ValueDataEntry("2003", 16.6));
-        seriesData.add(new ValueDataEntry("2004", 18.1));
-        seriesData.add(new ValueDataEntry("2005", 17.0));
-        seriesData.add(new ValueDataEntry("2006", 16.6));
-        seriesData.add(new ValueDataEntry("2007", 14.1));
-        seriesData.add(new ValueDataEntry("2008", 15.7));
-        seriesData.add(new ValueDataEntry("2009", 12.0));
 
         Set set = Set.instantiate();
         set.data(seriesData);
@@ -393,6 +389,8 @@ public class HomeFragment extends Fragment {
         anyChartView.setChart(radar);
 
     }
+
+
 
     private class CustomDataEntry extends ValueDataEntry {
         public CustomDataEntry(String x, Number value, Number value2, Number value3) {
