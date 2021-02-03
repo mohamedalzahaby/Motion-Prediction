@@ -11,7 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.MotionPrediction.Activity.MainActivity;
 import com.example.MotionPrediction.Activity.ProfileActivity;
+import com.example.MotionPrediction.Controllers.SessionController;
 import com.example.MotionPrediction.Models.Player;
 import com.example.MotionPrediction.R;
 
@@ -42,20 +44,15 @@ public class PlayersAdaptor extends RecyclerView.Adapter<PlayersAdaptor.MyViewHo
 
         final PlayersAdaptor.MyViewHolder viewHolder = new PlayersAdaptor.MyViewHolder(row) ;
 
-
         holder.playerName.setText(players.get(position).name);
-
-
-
         //Glide.with(mContext).load(0).apply(option).into(holder.img_thumbnail);
-
-
         viewHolder.container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context, ProfileActivity.class);
-//                i.putExtra("playerName",players.get(position).name);
-                context.startActivity(i);
+                SessionController sessionController = new SessionController();
+                sessionController.context = context;
+                sessionController.getPlayerSessions(players.get(position).id);
+
             }
         });
     }

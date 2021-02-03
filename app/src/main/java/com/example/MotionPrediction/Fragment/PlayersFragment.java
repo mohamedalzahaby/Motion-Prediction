@@ -30,6 +30,7 @@ public class PlayersFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    public ArrayList<Player> playersList;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -72,17 +73,13 @@ public class PlayersFragment extends Fragment {
         // Inflate the layout for this fragment
         View inflate = inflater.inflate(R.layout.fragment_photos, container, false);
         RecyclerView recycler = inflate.findViewById(R.id.recyclerview_players);
-        List<Player> players = new ArrayList<>();
-        players.add(new Player("mohamed alzahaby"));
-        players.add(new Player("Bassel Emad"));
-        players.add(new Player("Moataz Samir"));
-        players.add(new Player("Hazem Alaa"));
-        if (players.isEmpty()){
+
+        if (playersList.isEmpty()){
             TextView textView = inflate.findViewById(R.id.recyclerview_players_no_data_to_show);
             textView.setVisibility(View.VISIBLE);
             return inflate;
         }
-        PlayersAdaptor playersAdaptor= new PlayersAdaptor(players, inflate.getContext());
+        PlayersAdaptor playersAdaptor= new PlayersAdaptor(playersList, inflate.getContext());
         recycler.setLayoutManager(new LinearLayoutManager(inflate.getContext()));
         recycler.setAdapter(playersAdaptor);
         recycler.setItemAnimator(new DefaultItemAnimator());

@@ -29,12 +29,13 @@ tools:context="com.example.MotionPrediction.Activity.MainActivity">
     app:layout_behavior="@string/appbar_scrolling_view_behavior"></FrameLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-    android:id="@+id/fab"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="bottom|end"
-    android:layout_margin="@dimen/fab_margin"
-    app:backgroundTint="@color/colorPrimary"
-    app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        app:backgroundTint="@color/colorPrimary"
+        android:src="@drawable/add_team"
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

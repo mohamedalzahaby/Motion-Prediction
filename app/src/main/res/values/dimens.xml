@@ -10,4 +10,10 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="profile_width">75dp</dimen>
     <dimen name="profile_height">75dp</dimen>
+
+    <dimen name="standard_12">12dp</dimen>
+    <dimen name="standard_23">23dp</dimen>
+    <dimen name="standard_55">55dp</dimen>
+    <dimen name="standard_100">100dp</dimen>
+    <dimen name="standard_145">145dp</dimen>
 </resources>

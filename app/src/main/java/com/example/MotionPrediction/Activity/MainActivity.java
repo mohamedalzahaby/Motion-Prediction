@@ -21,19 +21,23 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.MotionPrediction.Controllers.UserController;
 import com.example.MotionPrediction.Fragment.HomeFragment;
 import com.example.MotionPrediction.Fragment.ProfileFragment;
 import com.example.MotionPrediction.Fragment.NotificationsFragment;
 import com.example.MotionPrediction.Fragment.PlayersFragment;
 import com.example.MotionPrediction.Fragment.SettingsFragment;
+import com.example.MotionPrediction.Models.Coach;
 import com.example.MotionPrediction.Models.TeamPerformance;
 import com.example.MotionPrediction.Other.CircleTransform;
 import com.example.MotionPrediction.R;
+import com.example.MotionPrediction.Views.ShowPlayersView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
 
     private NavigationView navigationView;
     private DrawerLayout drawer;
@@ -42,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView txtName, txtWebsite;
     private Toolbar toolbar;
     private FloatingActionButton fab;
-    private TeamPerformance teamPerformance;
+    private Coach coach;
 
     // urls to load navigation header background image
     // and profile image
@@ -73,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        teamPerformance =  new TeamPerformance();
-        teamPerformance = (TeamPerformance) getIntent().getSerializableExtra(teamPerformance.modelName);
+        coach = new Coach();
+        coach = (Coach) getIntent().getSerializableExtra(coach.getModelName());
 
 
 
@@ -103,8 +107,8 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                startActivity(new Intent(MainActivity.this, TeamActivity.class));
             }
         });
 
@@ -180,13 +184,26 @@ public class MainActivity extends AppCompatActivity {
         Runnable mPendingRunnable = new Runnable() {
             @Override
             public void run() {
-                // update the main content by replacing fragments
-                Fragment fragment = getHomeFragment();
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
-                        android.R.anim.fade_out);
-                fragmentTransaction.replace(R.id.frame, fragment, CURRENT_TAG);
-                fragmentTransaction.commitAllowingStateLoss();
+                if(navItemIndex == 1)
+                {
+                    UserController userController = new UserController();
+                    ShowPlayersView showPlayersView = new ShowPlayersView();
+                    showPlayersView.fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    showPlayersView.CURRENT_TAG = CURRENT_TAG;
+                    userController.view = showPlayersView;
+                    userController.user.id = coach.id;
+                    userController.getCoachPlayers(MainActivity.this);
+                }
+                else {
+
+                    // update the main content by replacing fragments
+                    Fragment fragment = getHomeFragment();
+                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
+                            android.R.anim.fade_out);
+                    fragmentTransaction.replace(R.id.frame, fragment, CURRENT_TAG);
+                    fragmentTransaction.commitAllowingStateLoss();
+                }
             }
         };
 
@@ -211,10 +228,11 @@ public class MainActivity extends AppCompatActivity {
             case 0:
                 // home
                 HomeFragment homeFragment = new HomeFragment();
-                homeFragment.teamPerformance = teamPerformance;
+                homeFragment.coach = coach;
                 return homeFragment;
             case 1:
                 // players
+
                 PlayersFragment playersFragment = new PlayersFragment();
                 return playersFragment;
             case 2:
@@ -395,9 +413,9 @@ public class MainActivity extends AppCompatActivity {
 
     // show or hide the fab
     private void toggleFab() {
-        if (navItemIndex == 1)
+//        if (navItemIndex == 1)
             fab.show();
-        else
-            fab.hide();
+//        else
+//            fab.hide();
     }
 }

@@ -15,7 +15,11 @@ public class User extends ModelHelper  {
     @SerializedName("userTypeId")
     public int userTypeId;
     @SerializedName("modelName")
-    public final String modelName = ClassFinder.getClassName(this);
+    private final String modelName = ClassFinder.getClassName(this);
+
+    public String getModelName() {
+        return modelName;
+    }
 
     public User(String email, String password, String name, int userTypeId) {
         this.email = email;

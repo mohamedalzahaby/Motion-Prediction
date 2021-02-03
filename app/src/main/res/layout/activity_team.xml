@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.MotionPrediction.Activity.TeamActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="30dp"
+        >
+
+        <TextView
+            android:id="@+id/tx_welcomeBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="104dp"
+            android:fontFamily="@font/nexabold"
+            android:text="@string/add_nTeam"
+            android:textColor="@color/dark_blue"
+            android:textSize="20pt"
+            app:layout_constraintBottom_toTopOf="@+id/et_add_team_field"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.007"
+            tools:layout_editor_absoluteX="-16dp" />
+
+        <EditText
+            android:id="@+id/et_add_team_field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="48dp"
+            android:hint="@string/edt_addTeam"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:padding="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/floatingActionButton"
+            tools:ignore="Autofill"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="260dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_icon_feather_arrow_right"
+            app:backgroundTint="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

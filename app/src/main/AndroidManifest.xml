@@ -13,23 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.example.MotionPrediction.Activity.MainActivity2">
+        <activity android:name=".Activity.TeamActivity"></activity>
+        <activity android:name=".Activity.MainActivity2">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.MotionPrediction.Activity.SignUpActivity"></activity>
-        <activity android:name="com.example.MotionPrediction.Activity.SignInActivity" />
-        <activity android:name="com.example.MotionPrediction.Activity.WelcomePage"></activity>
-        <activity android:name="com.example.MotionPrediction.DBConnection.MainActivity" />
-        <activity android:name="com.example.MotionPrediction.Activity.ProfileActivity" />
-        <activity android:name="com.example.MotionPrediction.Activity.PrivacyPolicyActivity" />
-        <activity android:name="com.example.MotionPrediction.Activity.AboutUsActivity" />
-        <activity android:name="com.example.MotionPrediction.Activity.MainActivity">
-
-        </activity>
+        <activity android:name=".Activity.SignUpActivity" />
+        <activity android:name=".Activity.SignInActivity" />
+        <activity android:name=".Activity.WelcomePage" />
+        <activity android:name=".DBConnection.MainActivity" />
+        <activity android:name=".Activity.ProfileActivity" />
+        <activity android:name=".Activity.PrivacyPolicyActivity" />
+        <activity android:name=".Activity.AboutUsActivity" />
+        <activity android:name=".Activity.MainActivity"></activity>
     </application>
 
 </manifest>

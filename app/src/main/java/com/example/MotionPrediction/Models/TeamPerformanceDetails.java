@@ -1,5 +1,6 @@
 package com.example.MotionPrediction.Models;
 
+
 import com.example.MotionPrediction.Other.ClassFinder;
 import com.google.gson.annotations.SerializedName;
 
@@ -7,8 +8,8 @@ import java.io.Serializable;
 
 public class TeamPerformanceDetails extends ModelHelper implements Serializable
 {
-    @SerializedName("moveId")
-    public int moveId;
+    @SerializedName("move")
+    public Move move;
     @SerializedName("totalCorrectMoves")
     public int totalCorrectMoves;
     @SerializedName("totalwrongMoves")

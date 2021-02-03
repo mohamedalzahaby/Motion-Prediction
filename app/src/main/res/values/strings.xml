@@ -46,4 +46,8 @@
     <string name="forgot_password">Forgot Password</string>
     <string name="coach">Coach</string>
     <string name="Player">Player</string>
+
+    <!--  Team Activity  -->
+    <string name="edt_addTeam">Team Name</string>
+    <string name="add_nTeam">ADD\n TEAM</string>
 </resources>

@@ -1,10 +1,9 @@
 package com.example.MotionPrediction.DBConnection;
 
 import com.example.MotionPrediction.Models.Coach;
+import com.example.MotionPrediction.Models.Player;
 import com.example.MotionPrediction.Models.TeamPerformance;
 import com.example.MotionPrediction.Models.User;
-
-import org.json.JSONObject;
 
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
@@ -40,4 +39,11 @@ public interface ApiInterface {
 
     @POST("getCoachTeamsData")
     Call<Coach> getCoachTeamsData(@Query("coachId") int id);
+
+    @POST("getCoachPlayers")
+    Call<Coach> getCoachPlayers(@Query("coachId") int id);
+
+
+    @POST("getPlayerSessionDetails")
+    Call<Player> getPlayerSessionsData(@Query("playerId") int id);
 }

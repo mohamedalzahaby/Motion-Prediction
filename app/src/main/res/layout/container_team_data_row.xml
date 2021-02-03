@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container_team_data_row"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:id="@+id/textView_teamName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <ProgressBar
+        android:id="@+id/chart_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:outlineSpotShadowColor="@color/cardview_dark_background"
+        />
+    <com.anychart.AnyChartView
+        android:id="@+id/any_chart_view"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_margin="10dp"
+        />
+
+    <ProgressBar
+        android:id="@+id/radar_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        />
+    <com.anychart.AnyChartView
+        android:id="@+id/radar_chart_view"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_margin="10dp"
+        />
+
+    <ProgressBar
+        android:id="@+id/bar_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        />
+    <com.anychart.AnyChartView
+        android:id="@+id/bar_chart"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_margin="10dp"
+        />
+</LinearLayout>
